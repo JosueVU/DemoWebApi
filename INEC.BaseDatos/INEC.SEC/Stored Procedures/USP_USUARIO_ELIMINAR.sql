@@ -21,6 +21,7 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
+
 	DELETE FROM [INEC.SEC].USUARIO
 	WHERE (ID_USUARIO = @ID_USUARIO)
 
