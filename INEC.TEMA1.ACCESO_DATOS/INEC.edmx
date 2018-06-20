@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="INECBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DIRECCION">
+          <Key>
+            <PropertyRef Name="ID_DIRECCION" />
+          </Key>
+          <Property Name="ID_DIRECCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="DESCRIPCION_DIRECCION" Type="varchar" MaxLength="400" />
+          <Property Name="FOTO_DIRECCION" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="varchar" MaxLength="100" />
+          <Property Name="APELLIDO1_USUARIO" Type="varchar" MaxLength="100" />
+          <Property Name="APELLIDO2_USUARIO" Type="varchar" MaxLength="100" />
+          <Property Name="FECHA_NACIMIENTO_USUARIO" Type="datetime" />
+          <Property Name="CODIGO_USUARIO" Type="varchar" MaxLength="10" />
+          <Property Name="FOTO_USUARIO" Type="varbinary(max)" />
+          <Property Name="CREACION_USUARIO" Type="varchar" MaxLength="10" />
+          <Property Name="FECHA_CREACION_USUARIO" Type="datetime" />
+          <Property Name="MODIFICACION_USUARIO" Type="varchar" MaxLength="10" />
+          <Property Name="MODIFICACION_FECHA_USUARIO" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_DIRECCION_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="DIRECCION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="INECBDModelStoreContainer">
+          <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" Schema="INEC.SEC" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="INEC.SEC" store:Type="Tables" />
+          <AssociationSet Name="FK_DIRECCION_USUARIO" Association="Self.FK_DIRECCION_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="DIRECCION" EntitySet="DIRECCION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="INECBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="INECBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DIRECCIONs" EntityType="INECBDModel.DIRECCION" />
+          <EntitySet Name="USUARIOs" EntityType="INECBDModel.USUARIO" />
+          <AssociationSet Name="FK_DIRECCION_USUARIO" Association="INECBDModel.FK_DIRECCION_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="DIRECCION" EntitySet="DIRECCIONs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DIRECCION">
+          <Key>
+            <PropertyRef Name="ID_DIRECCION" />
+          </Key>
+          <Property Name="ID_DIRECCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USUARIO" Type="Int32" />
+          <Property Name="DESCRIPCION_DIRECCION" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="FOTO_DIRECCION" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="USUARIO" Relationship="INECBDModel.FK_DIRECCION_USUARIO" FromRole="DIRECCION" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO1_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO2_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_NACIMIENTO_USUARIO" Type="DateTime" Precision="3" />
+          <Property Name="CODIGO_USUARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FOTO_USUARIO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CREACION_USUARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION_USUARIO" Type="DateTime" Precision="3" />
+          <Property Name="MODIFICACION_USUARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFICACION_FECHA_USUARIO" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DIRECCIONs" Relationship="INECBDModel.FK_DIRECCION_USUARIO" FromRole="USUARIO" ToRole="DIRECCION" />
+        </EntityType>
+        <Association Name="FK_DIRECCION_USUARIO">
+          <End Type="INECBDModel.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+          <End Type="INECBDModel.DIRECCION" Role="DIRECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="DIRECCION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="INECBDModelStoreContainer" CdmEntityContainer="INECBDEntities">
+          <EntitySetMapping Name="DIRECCIONs">
+            <EntityTypeMapping TypeName="INECBDModel.DIRECCION">
+              <MappingFragment StoreEntitySet="DIRECCION">
+                <ScalarProperty Name="FOTO_DIRECCION" ColumnName="FOTO_DIRECCION" />
+                <ScalarProperty Name="DESCRIPCION_DIRECCION" ColumnName="DESCRIPCION_DIRECCION" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_DIRECCION" ColumnName="ID_DIRECCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOs">
+            <EntityTypeMapping TypeName="INECBDModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="MODIFICACION_FECHA_USUARIO" ColumnName="MODIFICACION_FECHA_USUARIO" />
+                <ScalarProperty Name="MODIFICACION_USUARIO" ColumnName="MODIFICACION_USUARIO" />
+                <ScalarProperty Name="FECHA_CREACION_USUARIO" ColumnName="FECHA_CREACION_USUARIO" />
+                <ScalarProperty Name="CREACION_USUARIO" ColumnName="CREACION_USUARIO" />
+                <ScalarProperty Name="FOTO_USUARIO" ColumnName="FOTO_USUARIO" />
+                <ScalarProperty Name="CODIGO_USUARIO" ColumnName="CODIGO_USUARIO" />
+                <ScalarProperty Name="FECHA_NACIMIENTO_USUARIO" ColumnName="FECHA_NACIMIENTO_USUARIO" />
+                <ScalarProperty Name="APELLIDO2_USUARIO" ColumnName="APELLIDO2_USUARIO" />
+                <ScalarProperty Name="APELLIDO1_USUARIO" ColumnName="APELLIDO1_USUARIO" />
+                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,5 @@
+﻿CREATE SCHEMA [INEC.SEC]
+    AUTHORIZATION [dbo];
+
+
+
