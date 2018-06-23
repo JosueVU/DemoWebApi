@@ -1,4 +1,4 @@
-﻿namespace CSP.Common.Model.Class
+﻿namespace INEC.TEMA1.COMUN
 {
     using System.Net;
 

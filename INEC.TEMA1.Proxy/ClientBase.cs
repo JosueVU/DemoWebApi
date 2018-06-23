@@ -1,5 +1,6 @@
 ﻿namespace INEC.TEMA1.Proxy
 {
+    using INEC.TEMA1.COMUN;
     using System.Net.Http;
     using System.Threading.Tasks;
     using System.Web.Helpers;
@@ -16,6 +17,16 @@
 
         //Json Response verbs implementation
         protected async Task<TResponse> PostJsonEncodedContent<TResponse, TModel>(string url, TModel model)
+            where TResponse : ApiResponse<TModel>, new()
+        {
+            using (var apiResponse = await ApiProxy.PostJsonEncodedContentWithContext(url, model))
+            {
+                return await DecodeJsonResponse<TResponse, TModel>(apiResponse);
+            }
+        }
+
+        //Json Response verbs implementation
+        protected async Task<TResponse> GetJsonEncodedContent<TResponse, TModel>(string url, TModel model)
             where TResponse : ApiResponse<TModel>, new()
         {
             using (var apiResponse = await ApiProxy.PostJsonEncodedContentWithContext(url, model))

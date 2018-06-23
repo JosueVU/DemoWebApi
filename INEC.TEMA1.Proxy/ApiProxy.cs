@@ -6,6 +6,9 @@ namespace INEC.TEMA1.Proxy
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
+    using System.Linq;
+    using System.Web;
+    using INEC.TEMA1.COMUN;
 
     public class ApiProxy : IApiProxy
     {
@@ -21,7 +24,6 @@ namespace INEC.TEMA1.Proxy
 
         public async Task<HttpResponseMessage> PostFormEncodedContent(string requestUri, params KeyValuePair<string, string>[] values)
         {
-            AddToken();
             using (var content = new FormUrlEncodedContent(values))
             {
                 var response = await httpClient.PostAsync(requestUri, content);
@@ -33,7 +35,6 @@ namespace INEC.TEMA1.Proxy
         {
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            AddToken();
             ApiRequest<T> contentRequest = new ApiRequest<T>
             {
                 Model = content
@@ -51,13 +52,38 @@ namespace INEC.TEMA1.Proxy
           
         }
 
-        private void AddToken()
+        public async Task<HttpResponseMessage> GetEncodedContentWithContext<T>(string requestUri, T content)
         {
-            if (tokenContainer.ApiToken != null)
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            ApiRequest<T> contentRequest = new ApiRequest<T>
             {
-                httpClient.DefaultRequestHeaders.Clear();
-                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenContainer.ApiToken);
+                Model = content
+            };
+            try
+            {
+                HttpResponseMessage response = null;
+                if (contentRequest.Model != null)
+                {
+                    var properties = from p in contentRequest.Model.GetType().GetProperties()
+                                     where p.GetValue(contentRequest.Model, null) != null && !p.PropertyType.IsAbstract
+                                     select HttpUtility.UrlEncode(p.GetValue(contentRequest.Model, null).ToString());
+
+                    response = await httpClient.GetAsync(requestUri + "/" + properties.FirstOrDefault());//String.Join("&", properties.ToArray()));
+                }
+                else
+                {
+                    response = await httpClient.GetAsync(requestUri);
+                }
+               
+                return response;
             }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+                return null;
+            }
+
         }
     }
 }

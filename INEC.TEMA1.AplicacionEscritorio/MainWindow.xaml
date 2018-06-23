@@ -1,0 +1,14 @@
+﻿<Window x:Class="INEC.TEMA1.AplicacionEscritorio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:INEC.TEMA1.AplicacionEscritorio"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Menu x:Name="menu1" DockPanel.Dock="Top"   Height="31" VerticalAlignment="Top" Margin="0,34,0,0" RenderTransformOrigin="2.274,0.524"/>
+        <Label Content="Programa de Ejemplo CRUD Web API" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="772" Height="28" ClipToBounds="True"/>
+        <ListBox HorizontalAlignment="Left" Height="164" Margin="83,129,0,0" VerticalAlignment="Top" Width="239"/>
+    </Grid>
+</Window>

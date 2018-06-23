@@ -41,6 +41,7 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -76,18 +77,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiProxy.cs" />
-    <Compile Include="ApiRequest.cs" />
-    <Compile Include="ApiResponse.cs" />
     <Compile Include="ClientBase.cs" />
+    <Compile Include="HttpClientInstance.cs" />
     <Compile Include="IApiProxy.cs" />
     <Compile Include="ITokenContainer.cs" />
+    <Compile Include="IUsuarioProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenContainer.cs" />
     <Compile Include="TokenResponse.cs" />
+    <Compile Include="UsuarioProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\INEC.TEMA1.COMUN\INEC.TEMA1.COMUN.csproj">
+      <Project>{cd41f047-440e-47e7-aac6-0b95442d7e46}</Project>
+      <Name>INEC.TEMA1.COMUN</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,18 +18,20 @@ namespace INEC.TEMA1.WebAPI.Controllers
         private IUsuarioLogica logica = null;
         public USUARIO usuario { get; set; }
         public List<USUARIO> listaUsuario { get; set; }
+        public ApiResponse<List<USUARIO>> apiResponse = null;
 
         public UsuarioController()
         {
             usuario = new USUARIO();
             logica = new UsuarioLogica();
+            apiResponse = new ApiResponse<List<USUARIO>>();
         }
         // GET: api/Usuario
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             HttpResponseMessage result = null;
             result = Request.CreateResponse(HttpStatusCode.OK, logica.ObtenerUsuarios());
-            return result;
+            return ResponseMessage(result);
         }
 
         // GET: api/Usuario/5
@@ -100,6 +102,8 @@ namespace INEC.TEMA1.WebAPI.Controllers
                             usuario.FOTO_USUARIO = br.ReadBytes((Int32)fs.Length);
                             usuario.FECHA_CREACION_USUARIO = DateTime.Now;
                             usuario.FECHA_NACIMIENTO_USUARIO = DateTime.Now;
+                            usuario.NOMBRE_USUARIO = HttpContext.Current.Request.Form["NOMBRE_USUARIO_" + i];
+                            usuario.APELLIDO1_USUARIO = HttpContext.Current.Request.Form["APELLIDO1_" + i];
                         }
                     }
                     listaUsuario.Add(usuario);

@@ -1,4 +1,5 @@
-﻿using INEC.TEMA1.Proxy;
+﻿using INEC.TEMA1.COMUN;
+using INEC.TEMA1.Proxy;
 
 namespace CSP.Common.Model.Class
 {

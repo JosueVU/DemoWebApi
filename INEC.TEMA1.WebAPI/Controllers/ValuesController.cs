@@ -48,7 +48,7 @@ namespace INEC.TEMA1.WebAPI.Controllers
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpGet]
         public List<byte[]> ObtenerImagen([FromBody]string value)
         {
             var prueba = new List<byte[]>();

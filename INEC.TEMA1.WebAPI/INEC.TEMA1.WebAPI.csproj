@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UsuarioEscritorioController.cs" />
     <Compile Include="Controllers\UsuarioImagenController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\UsuarioEncriptadoController.cs" />

@@ -1,4 +1,4 @@
-﻿namespace INEC.TEMA1.Proxy
+﻿namespace INEC.TEMA1.COMUN
 {
     using System.Net;
 

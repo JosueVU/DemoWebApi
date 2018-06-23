@@ -1,7 +1,7 @@
 ﻿using INEC.TEMA1.Proxy;
 using System.Web;
 
-namespace CSP.Common.Model.Class
+namespace INEC.TEMA1.Proxy
 {
     public class TokenContainer : ITokenContainer
     {

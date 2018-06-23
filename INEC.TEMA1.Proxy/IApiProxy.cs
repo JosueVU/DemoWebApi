@@ -10,5 +10,6 @@
         Task<HttpResponseMessage> PostFormEncodedContent(string requestUri, params KeyValuePair<string, string>[] values);
         //Json Response verbs interface
         Task<HttpResponseMessage> PostJsonEncodedContentWithContext<T>(string requestUri, T content);
+        Task<HttpResponseMessage> GetEncodedContentWithContext<T>(string requestUri, T content);
     }
 }

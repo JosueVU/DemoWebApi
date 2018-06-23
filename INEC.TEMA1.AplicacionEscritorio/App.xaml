@@ -1,0 +1,9 @@
+﻿<Application x:Class="INEC.TEMA1.AplicacionEscritorio.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:INEC.TEMA1.AplicacionEscritorio"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

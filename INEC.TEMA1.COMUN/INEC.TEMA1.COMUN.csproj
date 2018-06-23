@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiRequest.cs" />
+    <Compile Include="ApiResponse.cs" />
     <Compile Include="DIRECCION.cs">
       <DependentUpon>INEC.tt</DependentUpon>
     </Compile>
