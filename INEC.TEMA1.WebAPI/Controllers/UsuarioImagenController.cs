@@ -1,6 +1,7 @@
 ﻿using INEC.TEMA1.COMUN;
 using INEC.TEMA1.LOGICA.Clases;
 using INEC.TEMA1.LOGICA.Interfaz;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,7 +83,7 @@ namespace INEC.TEMA1.WebAPI.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage AgregarUsuariosMasivos()
+        public IHttpActionResult AgregarUsuariosMasivos()
         {
             HttpResponseMessage result = null;
             listaUsuario = new List<USUARIO>();
@@ -101,6 +102,7 @@ namespace INEC.TEMA1.WebAPI.Controllers
                             usuario.FOTO_USUARIO = br.ReadBytes((Int32)fs.Length);
                             usuario.FECHA_CREACION_USUARIO = DateTime.Now;
                             usuario.FECHA_NACIMIENTO_USUARIO = DateTime.Now;
+                            usuario.NOMBRE_USUARIO = request.Form["NOMBRE_USUARIO_" + i];
                         }
                     }
                     listaUsuario.Add(usuario);
@@ -113,18 +115,18 @@ namespace INEC.TEMA1.WebAPI.Controllers
                 
                 var resultado =logica.GuardaUsuarioMasivo(listaUsuario);
 
-                result = Request.CreateResponse(HttpStatusCode.OK, resultado);
+                result = Request.CreateResponse(HttpStatusCode.OK, listaUsuario);
             }
             catch (Exception ex)
             {
                 result = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
 
-            return result;
+            return ResponseMessage(result);
         }
 
         [HttpPost]
-        public HttpResponseMessage ActualizarUsuario()
+        public IHttpActionResult ActualizarUsuario()
         {
             HttpResponseMessage result = null;
             try
@@ -158,7 +160,7 @@ namespace INEC.TEMA1.WebAPI.Controllers
                 result = Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
 
-            return result;
+            return ResponseMessage(result);
         }
 
         [HttpPost]

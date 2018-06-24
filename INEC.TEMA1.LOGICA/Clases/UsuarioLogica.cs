@@ -35,7 +35,15 @@ namespace INEC.TEMA1.LOGICA.Clases
 
         public bool GuardaUsuarioMasivo(List<USUARIO> usuario)
         {
-            return datos.GuardaUsuarioMasivo(usuario);
+            try
+            {
+                return datos.GuardaUsuarioMasivo(usuario);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
         }
 
         public bool ActualizaUsuario(USUARIO usuario)
