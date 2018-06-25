@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[cliente_Tarjeta] (
+    [IDE_TARJETA] INT           IDENTITY (1, 1) NOT NULL,
+    [COD_BANCO]   INT           NULL,
+    [IDE_SJO]     VARCHAR (12)  NULL,
+    [DSC_INFO]    VARCHAR (120) NULL,
+    PRIMARY KEY CLUSTERED ([IDE_TARJETA] ASC),
+    CONSTRAINT [FKA4E448A82A04E850] FOREIGN KEY ([IDE_SJO]) REFERENCES [dbo].[cliente_Cliente] ([IDE_SJO])
+);
+

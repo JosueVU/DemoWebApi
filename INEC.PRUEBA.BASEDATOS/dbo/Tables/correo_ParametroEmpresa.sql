@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[correo_ParametroEmpresa] (
+    [IDE_EMPRESA]                 INT            NOT NULL,
+    [NUM_CEDULA_JURIDICA]         VARCHAR (40)   NULL,
+    [CON_FACTURA_MENSUAL]         BIGINT         NULL,
+    [CON_FACTURA_CONTADO]         BIGINT         NULL,
+    [DSC_INFORMACION_TRIBUTACION] VARCHAR (2048) NULL,
+    [PAR_DBF_CREDITO_COBRO]       VARCHAR (255)  NULL,
+    [POR_COSTO_FUEL]              FLOAT (53)     NULL,
+    [OBS_MENSAJE_FACTURA]         VARCHAR (2048) NULL,
+    [CAN_DIAS_PLAZO_CXC]          INT            NULL,
+    [MON_ELABORACION_GUIA]        FLOAT (53)     NULL,
+    [DSC_MON_ELABORACION_GUIA]    VARCHAR (120)  NOT NULL,
+    [COD_ECONOMY]                 INT            NULL,
+    [MON_MANEJO_PRIMERO]          FLOAT (53)     NULL,
+    [MON_MANEJO_ADICIONAL]        FLOAT (53)     NULL,
+    [POR_CARGO_TARJETA]           FLOAT (53)     NULL,
+    [DSC_FACTURA_ADUANA]          VARCHAR (4096) NULL,
+    [DSC_FACTURA_FLETES]          VARCHAR (4096) NULL,
+    PRIMARY KEY CLUSTERED ([IDE_EMPRESA] ASC),
+    CONSTRAINT [FK5DACBCF95C61B8F0] FOREIGN KEY ([IDE_EMPRESA]) REFERENCES [dbo].[cliente_Empresa] ([id])
+);
+

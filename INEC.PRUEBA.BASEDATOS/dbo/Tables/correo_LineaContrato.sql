@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[correo_LineaContrato] (
+    [IDE_CODIGO]            INT        IDENTITY (1, 1) NOT NULL,
+    [CAN_DESDE]             FLOAT (53) NULL,
+    [CAN_HASTA]             FLOAT (53) NULL,
+    [MON_COSTO]             FLOAT (53) NULL,
+    [IND_COSTO_PRORRATEADO] TINYINT    NULL,
+    [COD_TIPO_CONTRATO]     INT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([IDE_CODIGO] ASC),
+    CONSTRAINT [FK5D0DFDE0328C43A3] FOREIGN KEY ([COD_TIPO_CONTRATO]) REFERENCES [dbo].[correo_Contrato] ([IDE_CODIGO])
+);
+

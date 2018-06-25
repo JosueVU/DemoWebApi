@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[correo_Cortesia] (
+    [IDE_CODIGO]   INT           IDENTITY (1, 1) NOT NULL,
+    [DSC_NOMBRE]   VARCHAR (120) NULL,
+    [IND_VALOR]    TINYINT       NULL,
+    [MON_CORTESIA] FLOAT (53)    NULL,
+    [IDE_EMPRESA]  INT           NULL,
+    PRIMARY KEY CLUSTERED ([IDE_CODIGO] ASC),
+    CONSTRAINT [FKEACE03DD5C61B8F0] FOREIGN KEY ([IDE_EMPRESA]) REFERENCES [dbo].[cliente_Empresa] ([id])
+);
+

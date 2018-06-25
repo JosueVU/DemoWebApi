@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [Admin]
+    WITH PASSWORD = N'mjJ^qn,{ x|dywlwxlvfwaxgmsFT7_&#$!~<EmAkJmo fnoP', SID = 0x7B256FE8BC5B8D429EACE897C7858845, DEFAULT_DATABASE = [ClientesWeb], DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

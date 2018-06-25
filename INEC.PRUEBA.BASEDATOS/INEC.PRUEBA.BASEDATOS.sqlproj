@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>INEC.PRUEBA.BASEDATOS</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{e09f5f8a-4739-4fcc-906d-e2988a119868}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>INEC.PRUEBA.BASEDATOS</RootNamespace>
+    <AssemblyName>INEC.PRUEBA.BASEDATOS</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\tmp_mercadeo_data.sql" />
+    <Build Include="dbo\Tables\correo_RutaEntrega.sql" />
+    <Build Include="dbo\Tables\seguridad_Profile.sql" />
+    <Build Include="dbo\Tables\cliente_AlianzaComercial.sql" />
+    <Build Include="dbo\Tables\cliente_ProductoEmpresa.sql" />
+    <Build Include="dbo\Tables\correo_Auditoria.sql" />
+    <Build Include="dbo\Tables\cliente_TarjetaBitacora.sql" />
+    <Build Include="dbo\Tables\cliente_Reporte.sql" />
+    <Build Include="dbo\Tables\menu_MenuItem.sql" />
+    <Build Include="dbo\Tables\cliente_Zona.sql" />
+    <Build Include="dbo\Tables\correo_Ejecutivo.sql" />
+    <Build Include="dbo\Tables\cliente_Empresa.sql" />
+    <Build Include="dbo\Tables\seguridad_Usuario.sql" />
+    <Build Include="dbo\Tables\cliente_Direccion.sql" />
+    <Build Include="dbo\Tables\cliente_Cliente.sql" />
+    <Build Include="dbo\Tables\INTEGRA_CLIENTES.sql" />
+    <Build Include="dbo\Tables\cliente_Tarjeta.sql" />
+    <Build Include="dbo\Tables\JETBOX_INTEGRA_CLIENTES.sql" />
+    <Build Include="dbo\Tables\correo_Cortesia.sql" />
+    <Build Include="dbo\Tables\cliente_Autorizaciones.sql" />
+    <Build Include="dbo\Tables\correo_Mensajero.sql" />
+    <Build Include="dbo\Tables\correo_Contrato.sql" />
+    <Build Include="dbo\Tables\cliente_ClienteProducto.sql" />
+    <Build Include="dbo\Tables\cliente_Contacto.sql" />
+    <Build Include="dbo\Tables\seguridad_UsuarioPhoto.sql" />
+    <Build Include="dbo\Tables\cliente_Imagen.sql" />
+    <Build Include="dbo\Tables\cliente_Pais.sql" />
+    <Build Include="dbo\Tables\correo_Manejo.sql" />
+    <Build Include="dbo\Tables\cliente_Persona.sql" />
+    <Build Include="dbo\Tables\cliente_PersonaAutorizaciones.sql" />
+    <Build Include="dbo\Tables\cliente_Distrito.sql" />
+    <Build Include="dbo\Tables\cliente_Division.sql" />
+    <Build Include="dbo\Tables\cliente_PersonaPreferencias.sql" />
+    <Build Include="dbo\Tables\correo_ParametroEmpresa.sql" />
+    <Build Include="dbo\Tables\cliente_Preferencias.sql" />
+    <Build Include="dbo\Tables\correo_Manejo2.sql" />
+    <Build Include="dbo\Tables\correo_Seguro.sql" />
+    <Build Include="dbo\Tables\cliente_Profesion.sql" />
+    <Build Include="dbo\Tables\correo_ContratoAlianza.sql" />
+    <Build Include="dbo\Tables\cliente_Subdivision.sql" />
+    <Build Include="dbo\Tables\cliente_Sucursal.sql" />
+    <Build Include="dbo\Tables\cliente_SucursalProducto.sql" />
+    <Build Include="dbo\Tables\cliente_mercadeo_1.sql" />
+    <Build Include="dbo\Tables\correo_Autorizado.sql" />
+    <Build Include="dbo\Tables\cliente_mercadeo_2.sql" />
+    <Build Include="dbo\Tables\correo_ClienteCorreo.sql" />
+    <Build Include="dbo\Tables\correo_LineaContrato.sql" />
+    <Build Include="dbo\Tables\tmp_pobox_data.sql" />
+    <Build Include="dbo\Tables\cliente_Producto.sql" />
+    <Build Include="dbo\Tables\seguridad_Configuracion.sql" />
+    <Build Include="dbo\Tables\correo_Mensajeria.sql" />
+    <Build Include="dbo\Tables\tmp_mercadeo_cliente.sql" />
+    <Build Include="Security\secret.sql" />
+    <Build Include="Security\solcit.sql" />
+    <Build Include="Security\central_telefonica.sql" />
+    <Build Include="Security\clientes.sql" />
+    <Build Include="Security\Admin.sql" />
+    <Build Include="Security\Admin_1.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\ConsultaTelefono.sql" />
+    <Build Include="dbo\Stored Procedures\copiaTarjetaBitacora.sql" />
+    <Build Include="dbo\Stored Procedures\copiaTarjeta.sql" />
+    <Build Include="dbo\Stored Procedures\copiaAutorizado.sql" />
+    <Build Include="dbo\Stored Procedures\copiaDireccion.sql" />
+    <Build Include="dbo\Stored Procedures\copiaPersona.sql" />
+    <Build Include="dbo\Stored Procedures\copiaEjecutivo.sql" />
+    <Build Include="dbo\Stored Procedures\copiaContacto.sql" />
+    <Build Include="dbo\Stored Procedures\copiaCorreo.sql" />
+    <Build Include="dbo\Stored Procedures\copiaImagen.sql" />
+    <Build Include="dbo\Stored Procedures\copiaCliente.sql" />
+    <Build Include="dbo\Stored Procedures\copiaClientes.sql" />
+    <Build Include="dbo\Stored Procedures\comparaAutorizado.sql" />
+    <Build Include="dbo\Stored Procedures\comparaContacto.sql" />
+    <Build Include="dbo\Stored Procedures\comparaCorreo.sql" />
+    <Build Include="dbo\Stored Procedures\comparaDireccion.sql" />
+    <Build Include="dbo\Stored Procedures\comparaEjecutivo.sql" />
+    <Build Include="dbo\Stored Procedures\comparaImagen.sql" />
+    <Build Include="dbo\Stored Procedures\comparaPersona.sql" />
+    <Build Include="dbo\Stored Procedures\comparaTarjeta.sql" />
+    <Build Include="dbo\Stored Procedures\comparaTarjetaBitacora.sql" />
+    <Build Include="dbo\Stored Procedures\comparaCliente.sql" />
+  </ItemGroup>
+</Project>
