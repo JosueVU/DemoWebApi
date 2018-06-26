@@ -102,7 +102,7 @@ namespace INEC.TEMA1.WebAPI.Controllers
                             usuario.FOTO_USUARIO = br.ReadBytes((Int32)fs.Length);
                             usuario.FECHA_CREACION_USUARIO = DateTime.Now;
                             usuario.FECHA_NACIMIENTO_USUARIO = DateTime.Now;
-                            usuario.NOMBRE_USUARIO = HttpContext.Current.Request.Form["NOMBRE_USUARIO_" + i];
+                            usuario.NOMBRE_USUARIO = Encriptar.Decrypt(HttpContext.Current.Request.Form["NOMBRE_USUARIO_" + i]);
                             usuario.APELLIDO1_USUARIO = HttpContext.Current.Request.Form["APELLIDO1_" + i];
                         }
                     }
@@ -116,7 +116,7 @@ namespace INEC.TEMA1.WebAPI.Controllers
                 
                 var resultado =logica.GuardaUsuarioMasivo(listaUsuario);
 
-                result = Request.CreateResponse(HttpStatusCode.OK, resultado);
+                result = Request.CreateResponse(HttpStatusCode.OK, Encriptar.Encrypt("Exitoso"));
             }
             catch (Exception ex)
             {
